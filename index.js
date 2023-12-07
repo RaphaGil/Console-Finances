@@ -86,3 +86,148 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+console.log('Financial Analysis:')
+// ? Total months:
+let totalMonths = finances.length;// Calculates the total number of months by retrieving the length of the 'finances' array.
+console.log(`Total Months: ${totalMonths}`);// Display the total months in the console.
+
+// The net total amount:
+let totalAmount = 0; // Initializes a variable to store the total amount and sets it to zero.
+for (let i = 0; i < finances.length; i++) {// Iterate through each financial record in the 'finances' array.
+  totalAmount += finances[i][1];// Access the second element of each financial record (finances[i][1]) and add it to the totalAmount.
+}
+console.log(`Total: $${totalAmount}`);// Display the totalAmount in the console.
+
+
+// ? The average of the changes:
+
+// Calculate the changes in Profit/Losses month-to-month:
+let totalChanges = 0; // Initializes a variable to store the total changes between consecutive months.
+
+for (let i = 1; i < finances.length; i++) {
+  let change = finances[i][1] - finances[i - 1][1];// Calculates the change between the current month's value and the previous month's value.
+  totalChanges += change;// Accumulates the computed change in the totalChanges variable.
+}
+// Calculates the average change in Profit/Losses over the entire period.
+let totalNetAverage = totalChanges / (totalMonths - 1);
+console.log(`Average Change: ${totalNetAverage}`);// Displays the calculated total net average in the console.
+
+
+// ? The greatest increase in Profit/Losses:
+let greatestIncrease = 0; // Initializes a variable to store the greatest increase in Profit/Losses.
+let greatestMonth; // Initializes a variable to store the month associated with the greatest increase.
+
+for (let i = 1; i < finances.length; i++) {
+  let change = finances[i][1] - finances[i - 1][1];// Calculates the change between the current month's value and the previous month's value.
+  if (change > greatestIncrease) { // Checks if the current change is greater than the greatestIncrease.
+    greatestIncrease = change;  // Updates greatestIncrease with the current change value.
+    greatestMonth = finances[i][0]; // Stores the month associated with the greatest increase.
+  }
+}
+console.log(`Greatest Increase in Profits/Losses: ${greatestMonth} ($${greatestIncrease})`);// Displays the greatest increase in Profit/Losses and the associated month in the console.
+
+// ? The greatest decrease in Profit/Losses:
+let greatestDecrease = 0; // Initializes a variable to store the greatest decrease in Profit/Losses.
+let decreaseMonth; // Initializes a variable to store the month associated with the greatest decrease.
+
+for (let i = 1; i < finances.length; i++) {
+  let change = finances[i][1] - finances[i - 1][1]; // Calculates the decrease between the current month's value and the previous month's value.
+  if (change < greatestDecrease) {
+    greatestDecrease = change; // Updates greatestDecrease with the current decrease value.
+    decreaseMonth = finances[i][0]; // Stores the month associated with the greatest decrease.
+  }
+}
+console.log(`Greatest Decrease in Profits/Losses: ${decreaseMonth} ($${greatestDecrease})`);
+
+
+switch(greatestDecrease){
+  case (finances[i][1] - finances[i - 1][1]<greatestDecrease):
+    greatestDecrease = finances[i][1] - finances[i - 1][1]; // Updates greatestDecrease with the current decrease value.
+    decreaseMonth = finances[i][0];
+    console.log(greatestDecrease)
+    break
+
+    default:
+      console.log()
+}
+
+
+
+//  Final asnser:
+console.log(`Financial Analysis
+------------------------------
+Total Months: ${totalMonths}
+Total: $${totalAmount}
+Average Change: ${totalNetAverage}
+Greatest Increase in Profits/Losses: ${greatestMonth} ($${greatestIncrease})
+Greatest Decrease in Profits/Losses: ${decreaseMonth} ($${greatestDecrease})
+`)
+
+
+// Instructions
+//!! Create a new GitHub repo called Console-Finances. Then, clone it to your computer.
+
+// !!Copy the starter files in your local git repository.
+
+// !!You have been given a dataset composed of arrays with two fields, Date and Profit/Losses.
+
+// !!Your task is to write JavaScript code that analyzes the records to calculate each of the following:
+
+// !!The total number of months included in the dataset.
+
+// !!The net total amount of Profit/Losses over the entire period.
+
+// !!The average of the changes in Profit/Losses over the entire period.
+
+// !!You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+// !!(Total/(Number of months - 1))
+// !!The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+// !!The greatest decrease in Profit/Losses (date and amount) over the entire period.
+
+// !!When you open your code in the browser your resulting analysis should look similar to the following:
+
+// !!Financial Analysis 
+// ----------------
+// !!Total Months: 86
+// !!Total: $38382578
+// !!Average Change: -2315.12
+// Greatest Increase in Profits/Losses: Feb-2012 ($1926159)
+// Greatest Decrease in Profits/Losses: Sep-2013 ($-2196167)
+// Your final code should print the analysis to the console.
+
+
+// Grading Requirements
+// This homework is graded based on the following criteria:
+
+// Technical Acceptance Criteria: 40%
+// Satisfies all of the above acceptance criteria.
+// Deployment: 32%
+// Application deployed at live URL.
+
+// Application loads with no errors.
+
+// Application GitHub URL submitted.
+
+// GitHub repository contains application code.
+
+// Repository Quality: 23%
+// !Repository has a unique name.
+
+// !Repository follows best practices for file structure and naming conventions.
+
+// Repository follows best practices for variable naming conventions, indentation, quality comments, etc.
+
+// Repository contains multiple descriptive commit messages.
+
+// Repository contains quality README file with description, screenshot, and link to deployed application.
+
+// Application Quality: 5%
+// Application resembles the mock-up functionality provided in the Challenge instructions.
+// Review
+// You are required to submit BOTH of the following for review:
+
+// The URL of the deployed application.
+
+// The URL of the GitHub repository that contains your code. Give the repository a unique name and include a README file that describes the project.
